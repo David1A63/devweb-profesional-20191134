@@ -1,0 +1,44 @@
+INSERT INTO zapatos(id, modelo, marca, color, talla, precio, stock, created_at, updated_at) VALUES(1, 'Botas', 'Timberland', 'Marrón', 43, 129.99, 5, '2023-03-25 14:20:00', '2023-03-25 14:20:00');
+INSERT INTO zapatos(id, modelo, marca, color, talla, precio, stock, created_at, updated_at) VALUES(2, 'Sneakers', 'Nike', 'Negro', 41, 89.99, 8, '2023-03-25 14:20:00', '2023-03-25 14:20:00');
+INSERT INTO zapatos(id, modelo, marca, color, talla, precio, stock, created_at, updated_at) VALUES(3, 'Sandalias', 'Crocs', 'Azul', 38, 29.99, 12, '2023-03-25 14:20:00', '2023-03-25 14:20:00');
+INSERT INTO zapatos(id, modelo, marca, color, talla, precio, stock, created_at, updated_at) VALUES(4, 'Zapatillas', 'Puma', 'Gris', 42, 79.99, 6, '2023-03-25 14:20:00', '2023-03-25 14:20:00');
+INSERT INTO zapatos(id, modelo, marca, color, talla, precio, stock, created_at, updated_at) VALUES(5, 'Botines', 'Hush Puppies', 'Negro', 39, 109.99, 4, '2023-03-25 14:20:00', '2023-03-25 14:20:00');
+INSERT INTO zapatos(id, modelo, marca, color, talla, precio, stock, created_at, updated_at) VALUES(6, 'Tacones', 'Steve Madden', 'Rojo', 36, 89.99, 3, '2023-03-25 14:20:00', '2023-03-25 14:20:00');
+INSERT INTO zapatos(id, modelo, marca, color, talla, precio, stock, created_at, updated_at) VALUES(7, 'Zapatillas', 'New Balance', 'Blanco', 40, 99.99, 7, '2023-03-25 14:20:00', '2023-03-25 14:20:00');
+INSERT INTO zapatos(id, modelo, marca, color, talla, precio, stock, created_at, updated_at) VALUES(8, 'Botas', 'Caterpillar', 'Café', 44, 149.99, 2, '2023-03-25 14:20:00', '2023-03-25 14:20:00'); 
+INSERT INTO zapatos(id, modelo, marca, color, talla, precio, stock, created_at, updated_at) VALUES(9, 'Air Force 1', 'Nike', 'Negro', 41, 130.99, 15, '2022-03-24 10:20:15', '2022-03-24 10:20:15');
+INSERT INTO zapatos(id, modelo, marca, color, talla, precio, stock, created_at, updated_at) VALUES(10, 'Classic Slip-On', 'Vans', 'Negro', 39, 50.00, 5, '2022-03-24 10:30:45', '2022-03-24 10:30:45');
+INSERT INTO zapatos(id, modelo, marca, color, talla, precio, stock, created_at, updated_at) VALUES(11, 'Old Skool', 'Vans', 'Rojo', 38, 60.00, 7, '2022-03-24 11:10:20', '2022-03-24 11:10:20');
+INSERT INTO zapatos(id, modelo, marca, color, talla, precio, stock, created_at, updated_at) VALUES(12, 'All Star Ox', 'Converse', 'Azul', 37, 70.00, 10, '2022-03-24 11:45:30', '2022-03-24 11:45:30');
+INSERT INTO zapatos(id, modelo, marca, color, talla, precio, stock, created_at, updated_at) VALUES(13, 'Superstar', 'Adidas', 'Blanco', 42, 90.00, 12, '2022-03-24 12:30:10', '2022-03-24 12:30:10');
+INSERT INTO zapatos(id, modelo, marca, color, talla, precio, stock, created_at, updated_at) VALUES(14, 'Gazelle', 'Adidas', 'Verde', 44, 80.00, 8, '2022-03-24 13:15:25', '2022-03-24 13:15:25');
+INSERT INTO zapatos(id, modelo, marca, color, talla, precio, stock, created_at, updated_at) VALUES(15, 'Chuck 70', 'Converse', 'Gris', 40, 75.00, 9, '2022-03-24 14:00:00', '2022-03-24 14:00:00');
+INSERT INTO zapatos(id, modelo, marca, color, talla, precio, stock, created_at, updated_at) VALUES(16, 'Air Jordan 1', 'Nike', 'Rojo', 41, 180.00, 6, '2022-03-24 14:45:15', '2022-03-24 14:45:15');
+INSERT INTO zapatos(id, modelo, marca, color, talla, precio, stock, created_at, updated_at) VALUES(17, 'Zapato casual', 'Puma', 'Negro', 42, 59.99, 15, '2023-03-25 10:30:00', '2023-03-25 10:30:00');
+INSERT INTO zapatos(id, modelo, marca, color, talla, precio, stock, created_at, updated_at) VALUES(18, 'Botas de cuero', 'Timberland', 'Café', 44, 129.99, 8, '2023-03-25 10:31:00', '2023-03-25 10:31:00');
+INSERT INTO zapatos(id, modelo, marca, color, talla, precio, stock, created_at, updated_at) VALUES(19, 'Tenis para correr', 'Adidas', 'Azul', 40.5, 79.99, 20, '2023-03-25 10:32:00', '2023-03-25 10:32:00');
+INSERT INTO zapatos(id, modelo, marca, color, talla, precio, stock, created_at, updated_at) VALUES(20, 'Sandalias de playa', 'Nike', 'Rojo', 42, 29.99, 5, '2023-03-25 10:33:00', '2023-03-25 10:33:00');
+
+INSERT INTO articulos(id, nombre, marca, categoria, contenido, precio, created_at, updated_at)
+VALUES
+(1, 'Arroz', 'Nacional', 'Granos', 'kg', 2.5, '2023-03-25 10:00:00', '2023-03-25 10:00:00'),
+(2, 'Frijoles', 'La Sierra', 'Granos', 'kg', 3.0, '2023-03-25 10:00:00', '2023-03-25 10:00:00'),
+(3, 'Harina', 'San Antonio', 'Harinas', 'kg', 1.5, '2023-03-25 10:00:00', '2023-03-25 10:00:00'),
+(4, 'Leche', 'Dos Pinos', 'Lácteos', 'lt', 1.2, '2023-03-25 10:00:00', '2023-03-25 10:00:00'),
+(5, 'Queso', 'Monteverde', 'Lácteos', 'kg', 6.0, '2023-03-25 10:00:00', '2023-03-25 10:00:00'),
+(6, 'Mantequilla', 'Dos Pinos', 'Lácteos', 'kg', 3.5, '2023-03-25 10:00:00', '2023-03-25 10:00:00'),
+(7, 'Cebolla', 'Nacional', 'Verduras', 'kg', 1.0, '2023-03-25 10:00:00', '2023-03-25 10:00:00'),
+(8, 'Tomate', 'Nacional', 'Verduras', 'kg', 1.5, '2023-03-25 10:00:00', '2023-03-25 10:00:00'),
+(9, 'Papa', 'Nacional', 'Verduras', 'kg', 1.2, '2023-03-25 10:00:00', '2023-03-25 10:00:00'),
+(10, 'Plátano', 'Nacional', 'Frutas', 'kg', 1.8, '2023-03-25 10:00:00', '2023-03-25 10:00:00'),
+(11, 'Manzana', 'Del Monte', 'Frutas', 'kg', 2.5, '2023-03-25 10:00:00', '2023-03-25 10:00:00'),
+(12, 'Naranja', 'Nacional', 'Frutas', 'kg', 1.2, '2023-03-25 10:00:00', '2023-03-25 10:00:00'),
+(13, 'Piña', 'Nacional', 'Frutas', 'kg', 2.0, '2023-03-25 10:00:00', '2023-03-25 10:00:00');
+
+INSERT INTO articulos(id, nombre, marca, categoria, contenido, precio, created_at, updated_at) VALUES(14, 'Pasta', 'Doria', 'Pastas', '400gr', 1.5, NOW(), NOW());
+INSERT INTO articulos(id, nombre, marca, categoria, contenido, precio, created_at, updated_at) VALUES(15, 'Sardinas', 'Calvo', 'Pescados', '120gr', 1.8, NOW(), NOW());
+INSERT INTO articulos(id, nombre, marca, categoria, contenido, precio, created_at, updated_at) VALUES(16, 'Leche', 'Alquería', 'Lácteos', '1lt', 2.5, NOW(), NOW());
+INSERT INTO articulos(id, nombre, marca, categoria, contenido, precio, created_at, updated_at) VALUES(17, 'Queso', 'Colanta', 'Lácteos', '500gr', 4.2, NOW(), NOW());
+INSERT INTO articulos(id, nombre, marca, categoria, contenido, precio, created_at, updated_at) VALUES(18, 'Carne de res', 'Frigo', 'Carnes', '1kg', 9.8, NOW(), NOW());
+INSERT INTO articulos(id, nombre, marca, categoria, contenido, precio, created_at, updated_at) VALUES(19, 'Pollo', 'Campollo', 'Carnes', '1kg', 5.6, NOW(), NOW());
+INSERT INTO articulos(id, nombre, marca, categoria, contenido, precio, created_at, updated_at) VALUES(20, 'Papas Fritas', 'Sabritas', 'Snacks', '100 grs', 20.99, NOW(), NOW());
