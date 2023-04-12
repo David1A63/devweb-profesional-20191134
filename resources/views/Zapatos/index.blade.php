@@ -5,16 +5,54 @@
     <!--Breadcrumb-->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li id="bread" class="breadcrumb-item text-light"><a href="/principal"><i class="fas fa-home"></i> Inicio</a></li>
-            <li id="bread" class="breadcrumb-item active text-light" aria-current="page">Búsquedas Avanzadas</li>
+            <li id="bread1" class="breadcrumb-item text-light"><a href="/"><i class="fas fa-home"></i>Inicio</a></li>
+            <li id="bread2" class="breadcrumb-item active text-light" aria-current="page">Búsquedas Avanzadas</li>
         </ol>
     </nav>
-    <h3>Zapatos</h3>
+    <h3 class="text-white fw-bold">Zapatos</h3>
     <!--Tabla de Zapatos-->
-    <div class="container-fluid bg-primary rounded-6 mx-auto" style="width: 98%">
+    <div class="container-fluid bg-primary rounded-3 mx-auto" style="width: 98%">
         <br>
         <a href="/zapatos/create" class="btn btn-success" >CREAR</a>
         <br><br>
+        <form action="{{ route('zapatos.index') }}" method="get">
+            <div class="input-group">
+                <div class="form-outline">
+                    <input type="text" id="form1" class="form-control bg-white" placeholder="Buscar..." name="busqueda" value="{{$busqueda}}" pattern="^[A-Za-z0-9áéíóúüñÑÁÉÍÓÚÜ\s]{5,60}$" title="No se aceptan caracteres especiales" />
+                </div>
+                <div>
+                    <select class="form-select text-white bg-success border-success" aria-label="Default select example" placeholder="Marca" name="marca" value="">
+                        @if($busqueda!='')
+                            <option selected>{{$marca}}</option>
+                        @else
+                            <option selected>Marca</option>
+                        @endif
+                        @foreach($zapatos as $zapato)
+                            <option>{{ $zapato->marca }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div>
+                    <select class="form-select text-white bg-success border-success" aria-label="Default select example" placeholder="Color" name="color" value="">
+                        @if($color!='')
+                        <option selected>{{$color}}</option>
+                        @else
+                        <option selected>Color</option>
+                        @endif
+                        @foreach($zapatos as $zapato)
+                            <option>{{ $zapato->color }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div>
+                    <a href="/zapatos" class="btn btn-warning">Limpiar</a>
+                </div>
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </form>
+        <br>
         <table id="zapatos" class="table align-middle table-stripped table-responsive mb-0 bg-white text-dark" style="width:100%">
             <thead class="bg-dark text-white">
                 <tr>
@@ -29,6 +67,11 @@
                 </tr>
             </thead>
             <tbody>
+                @if(count($zapatos)<=0)
+                    <tr>
+                        <td colspan="8">No hay Resultados</td>
+                    </tr>
+                @else
                 <!---Recibimos los datos--->
                 @foreach($zapatos as $zapato)
                     <tr>
@@ -50,7 +93,11 @@
                         </td>
                     </tr>
                 @endforeach
+                @endif
             </tbody>
+            <tfoot>
+                <td colspan="4">{{$zapatos->links()}}</td>
+            </tfoot>
         </table>
         <br>
     </div>

@@ -5,9 +5,9 @@
     <!--Breadcrumb-->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li id="bread" class="breadcrumb-item active text-light" aria-current="page"><i class="fas fa-home"></i> Inicio</li>
+            <li id="bread1" class="breadcrumb-item active text-light" aria-current="page"><i class="fas fa-home"></i> Inicio</li>
         </ol>
     </nav>
     <!--Llamando a la imagen-->
-    <h3>Hola, Bienvenido a mi página principal</h3>
+    <h3 class="text-white fw-bold">Hola, Bienvenido a mi página principal</h3>
 @endsection

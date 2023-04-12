@@ -26,6 +26,7 @@ h3{
     font-weight: bold;
     color: white;
     margin-top: 1%;
+    margin-left: 1%;
 }
 
 /*Imagen del código de error*/
@@ -52,7 +53,17 @@ footer {
 }
 
 /*Breadcrumbs*/
-#bread{
+#bread1{
+    margin-top: 1%;
+    margin-left: 1%;
+    font-weight: bold;
+}
+
+#bread2{
     margin-top: 1%;
     font-weight: bold;
+}
+
+#btn-crear{
+    margin-left: 1%;
 }

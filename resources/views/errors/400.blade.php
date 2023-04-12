@@ -5,8 +5,8 @@
     <!--Breadcrumb-->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li id="bread" class="breadcrumb-item text-light"><a href="/principal"><i class="fas fa-home"></i> Inicio</a></li>
-            <li id="bread" class="breadcrumb-item active text-light" aria-current="page">Error 400</li>
+            <li id="bread1" class="breadcrumb-item text-light"><a href="/"><i class="fas fa-home"></i> Inicio</a></li>
+            <li id="bread2" class="breadcrumb-item active text-light" aria-current="page">Error 400</li>
         </ol>
     </nav>
     <!--Llamando a la imagen-->

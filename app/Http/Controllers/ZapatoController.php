@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 //Llamando al modelo Zapato
 use App\Models\Zapato;
+use Illuminate\Support\Facades\DB;
 
 class ZapatoController extends Controller
 {
@@ -13,12 +14,47 @@ class ZapatoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //Realizamos la consulta de datos
-        $zapatos = Zapato::All();
-        //Enviamos los datos a la vista
-        return view('Zapatos.index')->with('zapatos', $zapatos);
+        $busqueda = trim($request->get('busqueda'));
+        $marca = trim($request->get('marca'));
+        $color = trim($request->get('color'));
+        if($busqueda==''){
+            //Es la función principal para mostrar en el index - Correcto
+            $zapatos = DB::table('zapatos')
+            ->select('id', 'modelo', 'marca', 'color', 'talla', 'precio', 'stock')
+            ->orderby('id', 'asc')
+            ->paginate(5);
+        }elseif($busqueda!=''){
+            //Es la busqueda del modelo especifico - Correcto
+            $zapatos = DB::table('zapatos')
+            ->select('id', 'modelo', 'marca', 'color', 'talla', 'precio', 'stock')
+            ->where('modelo', 'LIKE', $busqueda.'%')
+            ->orderby('id', 'asc')
+            ->paginate(5);
+        }elseif(strlen($busqueda)!=0 && $marca!='Marca'){
+            //Realiza la busqueda indicando el modelo y la marca
+            $zapatos = DB::table('zapatos')
+            ->select('id', 'modelo', 'marca', 'color', 'talla', 'precio', 'stock')
+            ->where(['modelo', 'LIKE', $busqueda.'%'], ['marca','LIKE', $marca.'%'])
+            ->orderby('id', 'asc')
+            ->paginate(5);
+        }elseif(strlen($busqueda)!=0 && $color!='Color'){
+            //Realiza la busqueda indicando el modelo y el color
+            $zapatos = DB::table('zapatos')
+            ->select('id', 'modelo', 'marca', 'color', 'talla', 'precio', 'stock')
+            ->where(['modelo', 'LIKE', $busqueda.'%'], ['color','LIKE', $color.'%'])
+            ->orderby('id', 'asc')
+            ->paginate(5);
+        }else{
+            //Realiza busqueda indicando modelo, marca y color
+            $zapatos = DB::table('zapatos')
+            ->select('id', 'modelo', 'marca', 'color', 'talla', 'precio', 'stock')
+            ->where(['modelo','LIKE', $busqueda.'%'], ['marca','LIKE', $marca.'%'],['color', 'LIKE', $color.'%'])
+            ->orderby('id', 'asc')
+            ->paginate(5);
+        }
+        return view('zapatos.index', compact('zapatos', 'busqueda', 'marca', 'color'));
     }
 
     /**

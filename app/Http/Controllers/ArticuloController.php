@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 //Llamando el modelo de Articulo
 use App\Models\Articulo;
+use Illuminate\Support\Facades\DB;
 
 class ArticuloController extends Controller
 {
@@ -13,13 +14,14 @@ class ArticuloController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //Realizamos la consulta de los datos
-        $articulos = Articulo::All();
-        //Dentro de la carpeta views abrimos articulo>index.blade.php
-        //Y le pasamos los datos de $articulos con el mismo nombre
-        return view('Articulos.index')->with('articulos', $articulos);
+    public function index(Request $request){
+        $busqueda = trim($request->get('busqueda'));
+        $articulos = DB::table('articulos')
+        ->select('id', 'nombre', 'marca', 'categoria', 'contenido', 'precio')
+        ->where('nombre', 'LIKE', '%'.$busqueda.'%')
+        ->orderby('id', 'asc')
+        ->paginate(5);
+        return view('Articulos.index', compact('articulos', 'busqueda'));
     }
 
     /**
@@ -43,6 +45,14 @@ class ArticuloController extends Controller
     {
         //Se inicia el objeto Articulo
         $articulos = new Articulo();
+        //Se validan los datos
+        $request->validate([
+            'nombre' => ['required'],
+            'marca' => ['required'],
+            'categoria' => ['required'],
+            'contenido' => ['required'],
+            'precio' => ['required'],
+        ]);
         //Se piden los datos de la vista
         $articulos->nombre = $request->get('nombre');
         $articulos->marca = $request->get('marca');

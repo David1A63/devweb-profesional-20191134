@@ -5,16 +5,30 @@
     <!--Breadcrumb-->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li id="bread" class="breadcrumb-item text-light"><a href="/principal"><i class="fas fa-home"></i> Inicio</a></li>
-            <li id="bread" class="breadcrumb-item active text-light" aria-current="page">Búsquedas Simples</li>
+            <li id="bread1" class="breadcrumb-item text-light"><a href="/"><i class="fas fa-home"></i>Inicio</a></li>
+            <li id="bread2" class="breadcrumb-item active text-light" aria-current="page">Búsquedas Simples</li>
         </ol>
     </nav>
-    <h3>Articulos</h3>
-    <!--Tabla de Zapatos-->
-    <div class="container-fluid bg-primary rounded-6 mx-auto" style="width: 98%">
+    <h3 class="text-white fw-bold">Articulos</h3>
+    <!--Tabla de Articulos-->
+    <div class="container-fluid rounded-3 bg-primary" style="width: 98%">
         <br>
-        <a href="/articulos/create" class="btn btn-success"  style="--mdb-bg-opacity: 0.5;">CREAR</a>
+        <a href="/articulos/create" class="btn btn-success">CREAR</a>
         <br><br>
+        <form action="{{ route('articulos.index') }}" method="get">
+            <div class="input-group">
+                <div class="form-outline">
+                    <input type="text" id="form1" class="form-control bg-white" placeholder="Buscar..." name="busqueda" value="{{$busqueda}}" pattern="^[A-Za-z0-9áéíóúüñÑÁÉÍÓÚÜ\s]{5,60}$" title="No se aceptan caracteres especiales"/>
+                </div>
+                <div>
+                    <a href="/articulos" class="btn btn-warning">Limpiar</a>
+                </div>
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </form>
+        <br>
         <table id="articulos" class="table align-middle table-stripped mb-0 bg-white text-dark" style="width:100%">
             <thead class="bg-dark text-white">
                 <tr>
@@ -28,6 +42,11 @@
                 </tr>
             </thead>
             <tbody>
+                @if(count($articulos)<=0)
+                    <tr>
+                        <td colspan="8">No hay Resultados</td>
+                    </tr>
+                @else
                 <!---Recibimos los datos--->
                 @foreach($articulos as $articulo)
                     <tr>
@@ -48,7 +67,11 @@
                         </td>
                     </tr>
                 @endforeach
+                @endif
             </tbody>
+            <tfoot>
+                <td colspan="4">{{ $articulos->links() }}</td>
+            </tfoot>
         </table>
         <br>
     </div>
