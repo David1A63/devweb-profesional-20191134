@@ -138,7 +138,7 @@ class ArticuloController extends Controller
         //Busca un solo articulo por el id que se esta editando
         $articulo = Articulo::find($id);
         //Se validan los datos
-        $datosValidados = Articulo::validarForm();
+        $datosValidados = $this->validarForm($request);
         //Se piden los datos de la vista
         $articulo->nombre = $request->get('nombre');
         $articulo->marca = $request->get('marca');

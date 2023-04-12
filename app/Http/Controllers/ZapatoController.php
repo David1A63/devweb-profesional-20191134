@@ -148,12 +148,12 @@ class ZapatoController extends Controller
         //No olvides que las cadenas de regex deben ir delimitadas por diagonales, ej:
         //regex:/^[A-Za-z0-9áéíóúüñÑÁÉÍÓÚÜ\s]{2,30}$/
         $datosValidos = $request->validate([
-            'modelo' => 'required',
-            'marca' => 'required',
-            'color' => 'required',
-            'talla' => 'required',
-            'precio' => 'required',
-            'stock' => 'required',
+            'modelo' => 'required|string|min:2|max:30|regex:/^[A-Za-z0-9áéíóúüñÑÁÉÍÓÚÜ\s]{2,30}$/',
+            'marca' => 'required|string|min:2|max:30|regex:/^[A-Za-z0-9áéíóúüñÑÁÉÍÓÚÜ\s]{2,30}$/',
+            'color' => 'required|string|min:2|max:30|regex:/^[A-Za-z0-9áéíóúüñÑÁÉÍÓÚÜ\s]{2,30}$/',
+            'talla' => 'required|number|regex:/^\d+(?:\.\d{1,2})?$/',
+            'precio' => 'required|number|regex:/^\d+(?:\.\d{1,2})?$/',
+            'stock' => 'required|number|regex:/^\d+$/',
         ], //Personalizando los mensajes de error
         [
             'modelo.required' => 'El nombre del modelo es obligatorio',
@@ -162,6 +162,24 @@ class ZapatoController extends Controller
             'talla.required' => 'La talla es obligatoria',
             'precio.required' => 'El precio es obligatorio',
             'stock.required' => 'El stock es obligatorio',
+            'modelo.string' => 'Solo se aceptan cadenas de texto',
+            'marca.string' => 'Solo se aceptan cadenas de texto',
+            'color.string' => 'Solo se aceptan cadenas de texto',
+            'talla.number' => 'Solo se aceptan valores numéricos',
+            'precio.number' => 'Solo se aceptan valores numéricos',
+            'stock.number' => 'Solo se aceptan valores númericos',
+            'modelo.min' => 'No pueden tener menos de 2 caracteres',
+            'marca.min' => 'No pueden tener menos de 2 caracteres',
+            'color.min' => 'No pueden tener menos de 2 caracteres',
+            'modelo.max' => 'No pueden tener más de 30 caracteres',
+            'marca.max' => 'No pueden tener más de 30 caracteres',
+            'color.max' => 'No pueden tener más de 30 caracteres',
+            'modelo.regex' => 'No se aceptan caracteres especiales',
+            'marca.regex' => 'No se aceptan caracteres especiales',
+            'color.regex' => 'No se aceptan caracteres especiales',
+            'talla.regex' => 'No se aceptan caracteres especiales',
+            'precio.regex' => 'No se aceptan caracteres especiales',
+            'stock.regex' => 'No se aceptan caracteres especiales',
         ]);
         return $datosValidos;
     }
@@ -221,6 +239,8 @@ class ZapatoController extends Controller
     {
         //Busca un solo zapatos por el id que se esta editando
         $zapato = Zapato::find($id);
+        //Se validan los datos
+        $datosValidados = $this->validarForm($request);
         //Se piden los datos de la vista
         $zapato->modelo = $request->get('modelo');
         $zapato->marca = $request->get('marca');

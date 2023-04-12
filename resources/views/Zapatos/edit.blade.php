@@ -20,26 +20,50 @@
             <div class="mb-3">
                 <label for="" class="form-label">Modelo</label>
                 <input id="modelo" name="modelo" type="text" class="form-control" value="{{$zapato->modelo}}" pattern="^[A-Za-z0-9áéíóúüñÑÁÉÍÓÚÜ\s]{2,30}$" title="No se aceptan caracteres especiales" tabindex="1">
+                @error('modelo')
+                    <br>
+                    <small style="color: red">{{$message}}</small>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Marca</label>
                 <input id="marca" name="marca" type="text" class="form-control" value="{{$zapato->marca}}" pattern="^[A-Za-z0-9áéíóúüñÑÁÉÍÓÚÜ\s]{2,30}$" title="No se aceptan caracteres especiales" tabindex="2">
+                @error('marca')
+                    <br>
+                    <small style="color: red">{{$message}}</small>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Color</label>
                 <input id="color" name="color" type="text" class="form-control" value="{{$zapato->color}}" pattern="^[A-Za-z0-9áéíóúüñÑÁÉÍÓÚÜ\s]{2,30}$" title="No se aceptan caracteres especiales" tabindex="3">
+                @error('color')
+                    <br>
+                    <small style="color: red">{{$message}}</small>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Talla</label>
                 <input id="talla" name="talla" type="number" step="0.5" class="form-control" value="{{ $zapato->talla }}" pattern="^\d+(?:\.\d{1,2})?$" title="Solo se permiten valores de tallas" tabindex="4">
+                @error('talla')
+                    <br>
+                    <small style="color: red">{{$message}}</small>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Precio</label>
                 <input id="precio" name="precio" type="number" step="0.01" class="form-control" value="{{ $zapato->precio }}" pattern="^\d+(?:\.\d{1,2})?$" title="Solo se permiten valores monetarios" tabindex="5">
+                @error('precio')
+                    <br>
+                    <small style="color: red">{{$message}}</small>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Stock</label>
                 <input id="stock" name="stock" type="number" step="1.00" class="form-control" value="{{ $zapato->stock }}" pattern="^\d+$" title="Solo se permiten números enteros" tabindex="6">
+                @error('stock')
+                    <br>
+                    <small style="color: red">{{$message}}</small>
+                @enderror
             </div>
             <div>
                 <a href="/zapatos" class="btn btn-secondary" tabindex="7">Cancelar</a>

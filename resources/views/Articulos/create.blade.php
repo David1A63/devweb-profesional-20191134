@@ -49,7 +49,7 @@
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Precio</label>
-                <input id="precio" name="precio" type="number" value="0.00" step="0.01" class="form-control" value="{{ old('precio') }}" pattern="^\d+(?:\.\d{1,2})?$" title="Solo se permiten valores monetarios" tabindex="5" required>
+                <input id="precio" name="precio" type="number" value="{{ old('precio') }}" step="0.01" class="form-control" value="{{ old('precio') }}" pattern="^\d+(?:\.\d{1,2})?$" title="Solo se permiten valores monetarios" tabindex="5" required>
                 @error('precio')
                     <br>
                     <small style="color: red">{{$message}}</small>
