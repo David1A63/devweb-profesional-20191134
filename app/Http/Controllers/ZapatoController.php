@@ -14,47 +14,116 @@ class ZapatoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
-        $busqueda = trim($request->get('busqueda'));
-        $marca = trim($request->get('marca'));
-        $color = trim($request->get('color'));
-        if($busqueda==''){
-            //Es la función principal para mostrar en el index - Correcto
-            $zapatos = DB::table('zapatos')
-            ->select('id', 'modelo', 'marca', 'color', 'talla', 'precio', 'stock')
-            ->orderby('id', 'asc')
-            ->paginate(5);
-        }elseif($busqueda!=''){
-            //Es la busqueda del modelo especifico - Correcto
-            $zapatos = DB::table('zapatos')
-            ->select('id', 'modelo', 'marca', 'color', 'talla', 'precio', 'stock')
-            ->where('modelo', 'LIKE', $busqueda.'%')
-            ->orderby('id', 'asc')
-            ->paginate(5);
-        }elseif(strlen($busqueda)!=0 && $marca!='Marca'){
-            //Realiza la busqueda indicando el modelo y la marca
-            $zapatos = DB::table('zapatos')
-            ->select('id', 'modelo', 'marca', 'color', 'talla', 'precio', 'stock')
-            ->where(['modelo', 'LIKE', $busqueda.'%'], ['marca','LIKE', $marca.'%'])
-            ->orderby('id', 'asc')
-            ->paginate(5);
-        }elseif(strlen($busqueda)!=0 && $color!='Color'){
-            //Realiza la busqueda indicando el modelo y el color
-            $zapatos = DB::table('zapatos')
-            ->select('id', 'modelo', 'marca', 'color', 'talla', 'precio', 'stock')
-            ->where(['modelo', 'LIKE', $busqueda.'%'], ['color','LIKE', $color.'%'])
-            ->orderby('id', 'asc')
-            ->paginate(5);
+    public function index(Request $request){
+        //Lectura de datos
+        $busqueda = $request->get('busqueda');
+        $marca = $request->get('marca');
+        $color = $request->get('color');
+        $query = Zapato::query();
+        //Esto carga en los select de la vista las marcas que existen en la tabla zapatos
+        $marcas = $this->consultarMarcas();
+        //Esto carga en los select de la vista los colores que existen en la tabla zapatos
+        $colores = $this->consultarColores();
+        //Cuando requieras hacer una busqueda con más de un campo es
+        //necesario pasar todos los atributos sin importar si están vacios o no
+        if(strval($busqueda)=='' && strval($marca)=='' && strval($color)==''){
+            //Cargando los datos al index (Función principal)
+            $zapatos = $this->consultarZapatos5();
         }else{
-            //Realiza busqueda indicando modelo, marca y color
+            $zapatos = $this->search(strval($busqueda), strval($marca), strval($color));
+        }
+        return view('zapatos.index', compact('zapatos', 'busqueda', 'marca', 'color', 'marcas', 'colores'));
+    }
+
+    public function consultarZapatos5(){
+        $zapatos = DB::table('zapatos')
+        ->select('id', 'modelo', 'marca', 'color', 'talla', 'precio', 'stock')
+        ->orderby('id', 'asc')
+        ->paginate(5);
+        return $zapatos;
+    }
+
+    public function consultarColores(){
+        $colores = DB::table('zapatos')
+        ->select('color')
+        ->distinct()
+        ->orderby('color', 'asc')
+        ->get();
+        return $colores;
+    }
+
+    public function consultarMarcas(){
+        $marca = DB::table('zapatos')
+        ->select('marca')
+        ->distinct()
+        ->orderby('marca', 'asc')
+        ->get();
+        return $marca;
+    }
+
+    public function search(string $busqueda, string $marca, string $color){
+        //Busqueda por modelo - Funciona Correcto
+        if($busqueda!='' && $marca=='Elige una Marca' && $color=='Elige un Color'){
             $zapatos = DB::table('zapatos')
             ->select('id', 'modelo', 'marca', 'color', 'talla', 'precio', 'stock')
-            ->where(['modelo','LIKE', $busqueda.'%'], ['marca','LIKE', $marca.'%'],['color', 'LIKE', $color.'%'])
+            ->where('modelo', 'LIKE', '%'.$busqueda.'%')
             ->orderby('id', 'asc')
             ->paginate(5);
         }
-        return view('zapatos.index', compact('zapatos', 'busqueda', 'marca', 'color'));
+        //Busqueda por marca - Funciona Correctamente
+        if($busqueda=='' && $marca!='Elige una Marca' && $color=='Elige un Color'){
+            $zapatos = DB::table('zapatos')
+            ->select('id', 'modelo', 'marca', 'color', 'talla', 'precio', 'stock')
+            ->where('marca', $marca)
+            ->orderby('id', 'asc')
+            ->paginate(5);
+        }
+        //Busqueda por color - Funciona Correctamente
+        if($busqueda=='' && $marca=='Elige una Marca' && $color!='Elige un Color'){
+            $zapatos = DB::table('zapatos')
+            ->select('id', 'modelo', 'marca', 'color', 'talla', 'precio', 'stock')
+            ->where('color', $color)
+            ->orderby('id', 'asc')
+            ->paginate(5);
+        }
+        //Busqueda por modelo y marca - Funciona Correctamente
+        if($busqueda!='' && $marca!='Elige una Marca' && $color=='Elige un Color'){
+            $zapatos = DB::table('zapatos')
+            ->select('id', 'modelo', 'marca', 'color', 'talla', 'precio', 'stock')
+            ->where('modelo', 'LIKE', '%'.$busqueda.'%')
+            ->where('marca', $marca)
+            ->orderby('id', 'asc')
+            ->paginate(5);
+        }
+        //Busqueda por modelo y color - Funciona Correctamente
+        if($busqueda!='' && $marca=='Elige una Marca' && $color!='Elige un Color'){
+            $zapatos = DB::table('zapatos')
+            ->select('id', 'modelo', 'marca', 'color', 'talla', 'precio', 'stock')
+            ->where('modelo', 'LIKE', '%'.$busqueda.'%')
+            ->where('color', $color)
+            ->orderby('id', 'asc')
+            ->paginate(5);
+        }
+        //Busqueda por marca y color - Funciona Correctamente
+        if($busqueda=='' && $marca!='Elige una Marca' && $color!='Elige un Color'){
+            $zapatos = DB::table('zapatos')
+            ->select('id', 'modelo', 'marca', 'color', 'talla', 'precio', 'stock')
+            ->where('marca', $marca)
+            ->where('color', $color)
+            ->orderby('id', 'asc')
+            ->paginate(5);
+        }
+        //Busqueda por modelo, marca y color - Funciona Correctamente
+        if($busqueda!='' && $marca!='Elige una Marca' && $color!='Elige un Color'){
+            $zapatos = DB::table('zapatos')
+            ->select('id', 'modelo', 'marca', 'color', 'talla', 'precio', 'stock')
+            ->where('modelo', 'LIKE', '%'.$busqueda.'%')
+            ->where('marca', $marca)
+            ->where('color', $color)
+            ->orderby('id', 'asc')
+            ->paginate(5);
+        }
+        return $zapatos;
     }
 
     /**
@@ -74,10 +143,35 @@ class ZapatoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function validarForm(Request $request){
+        //Aqui se establecen las reglas de validacion y los mensajes personalizados
+        //No olvides que las cadenas de regex deben ir delimitadas por diagonales, ej:
+        //regex:/^[A-Za-z0-9áéíóúüñÑÁÉÍÓÚÜ\s]{2,30}$/
+        $datosValidos = $request->validate([
+            'modelo' => 'required',
+            'marca' => 'required',
+            'color' => 'required',
+            'talla' => 'required',
+            'precio' => 'required',
+            'stock' => 'required',
+        ], //Personalizando los mensajes de error
+        [
+            'modelo.required' => 'El nombre del modelo es obligatorio',
+            'marca.required' => 'El nombre de la marca es obligatorio',
+            'color.required' => 'El color es obligatorio',
+            'talla.required' => 'La talla es obligatoria',
+            'precio.required' => 'El precio es obligatorio',
+            'stock.required' => 'El stock es obligatorio',
+        ]);
+        return $datosValidos;
+    }
+
     public function store(Request $request)
     {
         //Se inicia el objeto Zapato
         $zapatos = new Zapato();
+        //Se validan los datos
+        $datosValidados = $this->validarForm($request);
         //Se piden los datos de la vista
         $zapatos->modelo = $request->get('modelo');
         $zapatos->marca = $request->get('marca');

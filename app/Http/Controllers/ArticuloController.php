@@ -15,12 +15,15 @@ class ArticuloController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request){
+        //Buscando si hay algún contenido a buscar en el cuadro de busqueda
         $busqueda = trim($request->get('busqueda'));
+        //Consulta que devuelve los valores de la tabla Articulo en zapatos.
         $articulos = DB::table('articulos')
         ->select('id', 'nombre', 'marca', 'categoria', 'contenido', 'precio')
         ->where('nombre', 'LIKE', '%'.$busqueda.'%')
         ->orderby('id', 'asc')
         ->paginate(5);
+        //Enviando los datos obtenidos a la vista
         return view('Articulos.index', compact('articulos', 'busqueda'));
     }
 
@@ -41,18 +44,51 @@ class ArticuloController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function validarForm(Request $request){
+        //Aqui se establecen las reglas de validacion y los mensajes personalizados
+        //No olvides que las cadenas de regex deben ir delimitadas por diagonales, ej:
+        //regex:/^[A-Za-z0-9áéíóúüñÑÁÉÍÓÚÜ\s]{2,30}$/
+        $datosValidos = $request->validate([
+            'nombre' => 'required|string|min:2|max:30|regex:/^[A-Za-z0-9áéíóúüñÑÁÉÍÓÚÜ\s]{2,30}$/',
+            'marca' => 'required|string|min:2|max:30|regex:/^[A-Za-z0-9áéíóúüñÑÁÉÍÓÚÜ\s]{2,30}$/',
+            'categoria' => 'required|string|min:2|max:30|regex:/^[A-Za-z0-9áéíóúüñÑÁÉÍÓÚÜ\s]{2,30}$/',
+            'contenido' => 'required|string|min:2|max:30|regex:/^[A-Za-z0-9áéíóúüñÑÁÉÍÓÚÜ\s]{2,30}$/',
+            'precio' => 'required', 'numeric', 'regex:/^\d+(?:\.\d{1,2})?$/',
+        ],//Personalizando los mensajes de error
+            ['nombre.required'=>'El nombre es obligatorio',
+            'nombre.string' => 'Solo se aceptan cadenas de texto',
+            'nombre.min' => 'No puede tener menos de 2 caracteres',
+            'nombre.max' => 'No puede ser una cadena mayor de 30 caracteres',
+            'nombre.regex' => 'No se aceptan caracteres especiales',
+            'marca.required'=>'La marca es obligatoria',
+            'marca.string' => 'Solo se aceptan cadenas de texto',
+            'marca.min' => 'No puede tener menos de 2 caracteres',
+            'marca.max' => 'No puede ser una cadena mayor de 30 caracteres',
+            'marca.regex' => 'No se aceptan caracteres especiales',
+            'categoria.required'=>'La categoria es obligatoria',
+            'categoria.string' => 'Solo se aceptan cadenas de texto',
+            'categoria.min' => 'No puede tener menos de 2 caracteres',
+            'categoria.max' => 'No puede ser una cadena mayor de 30 caracteres',
+            'categoria.regex' => 'No se aceptan caracteres especiales',
+            'contenido.required'=>'El contenido es obligatorio',
+            'contenido.string' => 'Solo se aceptan cadenas de texto',
+            'contenido.min' => 'No puede tener menos de 2 caracteres',
+            'contenido.max' => 'No puede ser una cadena mayor de 30 caracteres',
+            'contenido.regex' => 'No se aceptan caracteres especiales',
+            'precio.required'=>'El precio es obligatorio',
+            'precio.numeric'=>'Solo se aceptan valores numéricos',
+            'precio.regex'=>'Solo se aceptan valores monetarios',
+        ]);
+        return $datosValidos;
+    }
+
     public function store(Request $request)
     {
         //Se inicia el objeto Articulo
         $articulos = new Articulo();
         //Se validan los datos
-        $request->validate([
-            'nombre' => ['required'],
-            'marca' => ['required'],
-            'categoria' => ['required'],
-            'contenido' => ['required'],
-            'precio' => ['required'],
-        ]);
+        $datosValidados = $this->validarForm($request);
         //Se piden los datos de la vista
         $articulos->nombre = $request->get('nombre');
         $articulos->marca = $request->get('marca');
@@ -101,6 +137,8 @@ class ArticuloController extends Controller
     {
         //Busca un solo articulo por el id que se esta editando
         $articulo = Articulo::find($id);
+        //Se validan los datos
+        $datosValidados = Articulo::validarForm();
         //Se piden los datos de la vista
         $articulo->nombre = $request->get('nombre');
         $articulo->marca = $request->get('marca');

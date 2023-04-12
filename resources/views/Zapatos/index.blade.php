@@ -15,32 +15,35 @@
         <br>
         <a href="/zapatos/create" class="btn btn-success" >CREAR</a>
         <br><br>
-        <form action="{{ route('zapatos.index') }}" method="get">
+        <form action="{{ route('zapatos.index') }}">
             <div class="input-group">
                 <div class="form-outline">
-                    <input type="text" id="form1" class="form-control bg-white" placeholder="Buscar..." name="busqueda" value="{{$busqueda}}" pattern="^[A-Za-z0-9áéíóúüñÑÁÉÍÓÚÜ\s]{5,60}$" title="No se aceptan caracteres especiales" />
+                    @csrf
+                    <input type="text" id="form1" class="form-control bg-white" placeholder="Buscar..." name="busqueda" value="{{$busqueda}}" pattern="^[A-Za-z0-9áéíóúüñÑÁÉÍÓÚÜ\s]{0,60}$" title="No se aceptan caracteres especiales" />
                 </div>
                 <div>
                     <select class="form-select text-white bg-success border-success" aria-label="Default select example" placeholder="Marca" name="marca" value="">
-                        @if($busqueda!='')
-                            <option selected>{{$marca}}</option>
-                        @else
-                            <option selected>Marca</option>
+                        @if($marca=='')
+                            <option value="Elige una Marca">Elige una Marca</option>
+                        @elseif($marca!='Marcas')
+                            <option value="{{ $marca }}">{{ $marca }}</option>
+                            <option value="Elige una Marca">Elige una Marca</option>
                         @endif
-                        @foreach($zapatos as $zapato)
-                            <option>{{ $zapato->marca }}</option>
+                        @foreach($marcas as $marca)
+                            <option value="{{ strval($marca->marca) }}">{{ $marca->marca }}</option>
                         @endforeach
                     </select>
                 </div>
                 <div>
                     <select class="form-select text-white bg-success border-success" aria-label="Default select example" placeholder="Color" name="color" value="">
-                        @if($color!='')
-                        <option selected>{{$color}}</option>
-                        @else
-                        <option selected>Color</option>
+                        @if($color=='')
+                            <option value="Elige un Color">Elige un Color</option>
+                        @elseif($color!='Colores')
+                            <option value="{{ $color }}">{{ $color }}</option>
+                            <option value="Elige un Color">Elige un Color</option>
                         @endif
-                        @foreach($zapatos as $zapato)
-                            <option>{{ $zapato->color }}</option>
+                        @foreach($colores as $color)
+                            <option value="{{ strval($color->color) }}">{{ $color->color }}</option>
                         @endforeach
                     </select>
                 </div>
