@@ -9,5 +9,7 @@
         </ol>
     </nav>
     <!--Llamando a la imagen-->
-    <h3 class="text-white fw-bold">Hola, Bienvenido a mi página principal</h3>
+    <center><h3 class="text-white fw-bold">SuperMercado, el mejor lugar para comprar!!!</h3></center>
+    <!--Carrusel-->
+
 @endsection
