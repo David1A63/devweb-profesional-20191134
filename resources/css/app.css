@@ -117,3 +117,39 @@ footer {
 .slider__btn--right{
     right: 10px;
 }
+
+/*Eventos de Scroll*/
+.contenedor{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.caja{
+    border: 1px solid black;
+    padding: 15px;
+    width: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+/*Al asignar la clase animado permite que un elemento muestre una animación simple*/
+.animado{
+    opacity: 0;
+    transition: all 0.5s;
+}
+/*Animacion de los eventos de scroll*/
+.mostrarArriba{
+    animation: mostrarArrriba 1s;
+}
+
+@keyframes mostrarArrriba{
+    0%{
+        transform: translateY(60px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}

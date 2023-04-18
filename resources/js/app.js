@@ -1,14 +1,16 @@
 import './bootstrap';
 
 //Contenido del slider
+//Obteniendo los elementos html
 const slider = document.querySelector("#slider");
 let sliderSection = document.querySelectorAll(".slider__section");
 let sliderSectionLast = sliderSection[sliderSection.length -1];
-
+//Obteniendo los botones
 const btnLeft = document.querySelector("#btn-left");
 const btnRight = document.querySelector("#btn-right");
-
+//Seleccionando la ultima imagen del carrusel y posicionandola antes de la primera
 slider.insertAdjacentElement('afterbegin', sliderSectionLast);
+
 //Botón derecho
 function Next(){
     let sliderSectionFirst = document.querySelectorAll(".slider__section")[0];
@@ -33,15 +35,32 @@ function Prev(){
         slider.style.marginLeft = "-100%"
     }, 500);
 }
-
+//Evento del botón derecho al dar clic sobre el
 btnRight.addEventListener('click', function(){
     Next();
 });
-
+//Evento del botón izquierdo al dar clic sobre el
 btnLeft.addEventListener('click', function(){
     Prev();
 });
-
+//Evento para que el slider sea automatico
 setInterval(function(){
     Next();
 }, 5000);
+
+//Eventos de Scroll
+let animado = document.querySelectorAll(".animado");
+
+function mostrarScroll(){
+    let scrollTop = document.documentElement.scrollTop;
+    for(var i = 0; i<animado.length; i++){
+        let alturaAnimado = animado[i].offsetTop;
+        if(alturaAnimado - 500 <scrollTop){
+            animado[i].style.opacity = 1;
+            //Permite que se muestre la animación de las tarjetas
+            animado[i].classList.add("mostrarArriba")
+        }
+    }
+}
+
+window.addEventListener('scroll', mostrarScroll);
