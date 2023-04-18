@@ -17,7 +17,7 @@
             <br>
             <div class="mb-3">
                 <label for="" class="form-label">Nombre</label>
-                <input id="nombre" name="nombre" type="text" value="{{ old('nombre') }}" class="form-control" pattern="^[A-Za-z0-9áéíóúüñÑÁÉÍÓÚÜ\s]{2,30}$" title="No se aceptan caracteres especiales" tabindex="1" required>
+                <input id="nombre" name="nombre" type="text" value="{{ old('nombre') }}" class="form-control" tabindex="1" required>
                 @error('nombre')
                     <br>
                     <small style="color: red">{{$message}}</small>
@@ -25,7 +25,7 @@
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Marca</label>
-                <input id="marca" name="marca" type="text" class="form-control" value="{{ old('marca') }}" pattern="^[A-Za-z0-9áéíóúüñÑÁÉÍÓÚÜ\s]{2,30}$" title="No se aceptan caracteres especiales" tabindex="2" required>
+                <input id="marca" name="marca" type="text" class="form-control" value="{{ old('marca') }}" tabindex="2" required>
                 @error('marca')
                     <br>
                     <small style="color: red">{{$message}}</small>
@@ -33,7 +33,7 @@
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Categoria</label>
-                <input id="categoria" name="categoria" type="text" class="form-control" value="{{ old('categoria') }}" pattern="^[A-Za-z0-9áéíóúüñÑÁÉÍÓÚÜ\s]{2,30}$" title="No se aceptan caracteres especiales" tabindex="3" required>
+                <input id="categoria" name="categoria" type="text" class="form-control" value="{{ old('categoria') }}" tabindex="3" required>
                 @error('categoria')
                     <br>
                     <small style="color: red">{{$message}}</small>
@@ -41,7 +41,7 @@
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Contenido</label>
-                <input id="contenido" name="contenido" type="text" class="form-control" value="{{ old('contenido') }}" pattern="^[A-Za-z0-9áéíóúüñÑÁÉÍÓÚÜ\s]{2,30}$" title="No se aceptan caracteres especiales" tabindex="4" required>
+                <input id="contenido" name="contenido" type="text" class="form-control" value="{{ old('contenido') }}" tabindex="4" required>
                 @error('contenido')
                     <br>
                     <small style="color: red">{{$message}}</small>
@@ -49,7 +49,7 @@
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Precio</label>
-                <input id="precio" name="precio" type="number" value="{{ old('precio') }}" step="0.01" class="form-control" value="{{ old('precio') }}" pattern="^\d+(?:\.\d{1,2})?$" title="Solo se permiten valores monetarios" tabindex="5" required>
+                <input id="precio" name="precio" type="number" value="{{ old('precio') }}" step="0.01" class="form-control" value="{{ old('precio') }}"  tabindex="5" required>
                 @error('precio')
                     <br>
                     <small style="color: red">{{$message}}</small>

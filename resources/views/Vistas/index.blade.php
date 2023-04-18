@@ -9,7 +9,24 @@
         </ol>
     </nav>
     <!--Llamando a la imagen-->
-    <center><h3 class="text-white fw-bold">SuperMercado, el mejor lugar para comprar!!!</h3></center>
+    <center><h3 class="text-white fw-bold">SuperMercado, el mejor lugar para comprar!!!</h3></center><br>
     <!--Carrusel-->
-
+    <div class="container-slider">
+        <div class="slider" id="slider">
+            <div class="slider__section">
+                <img src="{{ asset('img/super1.jpg')}}" alt="" class="slider__img">
+            </div>
+            <div class="slider__section">
+                <img src="{{ asset('img/super2.jpg')}}" alt="" class="slider__img">
+            </div>
+            <div class="slider__section">
+                <img src="{{ asset('img/super3.jpg')}}" alt="" class="slider__img">
+            </div>
+            <div class="slider__section">
+                <img src="{{ asset('img/super4.jpg')}}" alt="" class="slider__img">
+            </div>
+        </div>
+        <div class="slider__btn slider__btn--right" id="btn-right">&#62;</div>
+        <div class="slider__btn slider__btn--left" id="btn-left">&#60;</div>
+    </div>
 @endsection
