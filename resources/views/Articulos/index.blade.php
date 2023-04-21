@@ -9,7 +9,7 @@
             <li id="bread2" class="breadcrumb-item active text-light" aria-current="page">Búsquedas Simples</li>
         </ol>
     </nav>
-    <h3 class="text-white fw-bold">Articulos</h3>
+    <h3 class="text-white fw-bold">Artículos</h3>
     <!--Tabla de Articulos-->
     <div class="container-fluid rounded-3 bg-primary" style="width: 98%">
         <br>

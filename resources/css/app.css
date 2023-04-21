@@ -153,3 +153,68 @@ footer {
         transform: translateY(0);
     }
 }
+
+/*Eventos de mouse*/
+#miBoton1 {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#miBoton2 {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#miBoton3 {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#miBoton4 {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#miBoton5 {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#miBoton6 {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#miBoton7 {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#miBoton8 {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}

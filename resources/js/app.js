@@ -64,3 +64,100 @@ function mostrarScroll(){
 }
 
 window.addEventListener('scroll', mostrarScroll);
+
+/*Eventos de Mouse*/
+document.getElementById("miBoton1").onmouseover = function() {
+    this.style.backgroundColor = "green";
+};
+
+document.getElementById("miBoton1").onmouseout = function() {
+    this.style.backgroundColor = "blue";
+};
+
+document.getElementById("miBoton1").onclick = function(){
+    alert("Proximamente...");
+};
+
+document.getElementById("miBoton2").onmouseover = function() {
+    this.style.backgroundColor = "green";
+};
+
+document.getElementById("miBoton2").onmouseout = function() {
+    this.style.backgroundColor = "blue";
+};
+
+document.getElementById("miBoton2").onclick = function(){
+    alert("Proximamente...");
+};
+
+document.getElementById("miBoton3").onmouseover = function() {
+    this.style.backgroundColor = "green";
+};
+
+document.getElementById("miBoton3").onmouseout = function() {
+    this.style.backgroundColor = "blue";
+};
+
+document.getElementById("miBoton3").onclick = function(){
+    alert("Proximamente...");
+};
+
+document.getElementById("miBoton4").onmouseover = function() {
+    this.style.backgroundColor = "green";
+};
+
+document.getElementById("miBoton4").onmouseout = function() {
+    this.style.backgroundColor = "blue";
+};
+
+document.getElementById("miBoton4").onclick = function(){
+    alert("Proximamente...");
+};
+
+document.getElementById("miBoton5").onmouseover = function() {
+    this.style.backgroundColor = "green";
+};
+
+document.getElementById("miBoton5").onmouseout = function() {
+    this.style.backgroundColor = "blue";
+};
+
+document.getElementById("miBoton5").onclick = function(){
+    alert("Proximamente...");
+};
+
+document.getElementById("miBoton6").onmouseover = function() {
+    this.style.backgroundColor = "green";
+};
+
+document.getElementById("miBoton6").onmouseout = function() {
+    this.style.backgroundColor = "blue";
+};
+
+document.getElementById("miBoton6").onclick = function(){
+    alert("Proximamente...");
+};
+
+document.getElementById("miBoton7").onmouseover = function() {
+    this.style.backgroundColor = "green";
+};
+
+document.getElementById("miBoton7").onmouseout = function() {
+    this.style.backgroundColor = "blue";
+};
+
+document.getElementById("miBoton7").onclick = function(){
+    alert("Proximamente...");
+};
+
+document.getElementById("miBoton8").onmouseover = function() {
+    this.style.backgroundColor = "green";
+};
+
+document.getElementById("miBoton8").onmouseout = function() {
+    this.style.backgroundColor = "blue";
+};
+
+document.getElementById("miBoton8").onclick = function(){
+    alert("Proximamente...");
+};

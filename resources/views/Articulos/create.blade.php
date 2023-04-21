@@ -9,7 +9,7 @@
             <li id="bread2" class="breadcrumb-item active text-light" aria-current="page">Crear</li>
         </ol>
     </nav>
-    <h3 class="text-white fw-bold">Articulos</h3>
+    <h3 class="text-white fw-bold">Artículos</h3>
     <div class="container-fluid bg-light rounded-3 mx-auto" style="width: 98%">
     <form action="/articulos" method="POST">
             <!---Token de protección para evitar error 419--->
@@ -17,7 +17,7 @@
             <br>
             <div class="mb-3">
                 <label for="" class="form-label">Nombre</label>
-                <input id="nombre" name="nombre" type="text" value="{{ old('nombre') }}" class="form-control" tabindex="1" required>
+                <input id="nombre" name="nombre" type="text" value="{{ old('nombre') }}" class="form-control" tabindex="1">
                 @error('nombre')
                     <br>
                     <small style="color: red">{{$message}}</small>
@@ -25,7 +25,7 @@
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Marca</label>
-                <input id="marca" name="marca" type="text" class="form-control" value="{{ old('marca') }}" tabindex="2" required>
+                <input id="marca" name="marca" type="text" class="form-control" value="{{ old('marca') }}" tabindex="2">
                 @error('marca')
                     <br>
                     <small style="color: red">{{$message}}</small>
@@ -33,7 +33,7 @@
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Categoria</label>
-                <input id="categoria" name="categoria" type="text" class="form-control" value="{{ old('categoria') }}" tabindex="3" required>
+                <input id="categoria" name="categoria" type="text" class="form-control" value="{{ old('categoria') }}" tabindex="3">
                 @error('categoria')
                     <br>
                     <small style="color: red">{{$message}}</small>
@@ -41,7 +41,7 @@
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Contenido</label>
-                <input id="contenido" name="contenido" type="text" class="form-control" value="{{ old('contenido') }}" tabindex="4" required>
+                <input id="contenido" name="contenido" type="text" class="form-control" value="{{ old('contenido') }}" tabindex="4">
                 @error('contenido')
                     <br>
                     <small style="color: red">{{$message}}</small>
@@ -49,7 +49,7 @@
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Precio</label>
-                <input id="precio" name="precio" type="number" value="{{ old('precio') }}" step="0.01" class="form-control" value="{{ old('precio') }}"  tabindex="5" required>
+                <input id="precio" name="precio" type="number" value="{{ old('precio') }}" step="0.01" class="form-control" value="{{ old('precio') }}"  tabindex="5">
                 @error('precio')
                     <br>
                     <small style="color: red">{{$message}}</small>
