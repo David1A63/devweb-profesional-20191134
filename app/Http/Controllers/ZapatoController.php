@@ -32,7 +32,7 @@ class ZapatoController extends Controller
         }else{
             $zapatos = $this->search(strval($busqueda), strval($marca), strval($color));
         }
-        return view('zapatos.index', compact('zapatos', 'busqueda', 'marca', 'color', 'marcas', 'colores'));
+        return view('Zapatos.index', compact('zapatos', 'busqueda', 'marca', 'color', 'marcas', 'colores'));
     }
 
     public function consultarZapatos5(){
