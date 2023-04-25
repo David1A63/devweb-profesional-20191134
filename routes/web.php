@@ -24,6 +24,8 @@ Route::get('/principal', function(){
     return view('Vistas.index');
 });
 
+Route::get('/articulos-crear', 'App\Http\Controllers\ArticuloController@crear');
+
 //Enrutamiento de Errores
 Route::get('/error-400', function () {
     abort(400, 'Bad request');
@@ -42,3 +44,7 @@ Route::get('/error-500', function () {
 Route::resource('/articulos', 'App\Http\Controllers\ArticuloController');
 
 Route::resource('/zapatos', 'App\Http\Controllers\ZapatoController');
+
+Route::get('/articulos-crear', function(){
+    return view("Articulos.crear");
+});

@@ -161,3 +161,5 @@ document.getElementById("miBoton8").onmouseout = function() {
 document.getElementById("miBoton8").onclick = function(){
     alert("Proximamente...");
 };
+
+

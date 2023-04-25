@@ -14,6 +14,7 @@
     <div class="container-fluid rounded-3 bg-primary" style="width: 98%">
         <br>
         <a href="/articulos/create" class="btn btn-success">CREAR</a>
+        <a href="/articulos-crear" class="btn btn-success">CREAR (Validacion con JS)</a>
         <br><br>
         <form action="{{ route('articulos.index') }}" method="get">
             <div class="input-group">

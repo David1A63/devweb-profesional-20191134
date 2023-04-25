@@ -32,10 +32,13 @@ class ArticuloController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create(){
         //Muestra la pantalla de creación de datos
         return view('Articulos.create');
+    }
+
+    public function crear(){
+        return view("Articulos.crear");
     }
 
     /**
